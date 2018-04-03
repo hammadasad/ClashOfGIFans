@@ -52,5 +52,8 @@
 "defaults": {
 "styleExt": "scss",
 "prefixInterfaces": false
+},
+"schematics": {
+  
 }
 }
