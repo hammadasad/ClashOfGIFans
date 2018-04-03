@@ -5,7 +5,13 @@ import { AppRoutingModule } from '@app/app-routing.module';
 
 import { AppComponent } from '@app/app.component';
 
+import { FormsModule } from '@angular/forms';
+
+import { HttpClientModule } from '@angular/common/http';
+
 import { CoreModule } from '@app/core/core.module';
+
+import { PagesModule } from '@app/pages/pages.module';
 
 
 @NgModule({
@@ -15,7 +21,10 @@ import { CoreModule } from '@app/core/core.module';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    CoreModule
+    FormsModule,
+    HttpClientModule,
+    CoreModule,
+    PagesModule
   ],
   providers: [],
   bootstrap: [AppComponent]
