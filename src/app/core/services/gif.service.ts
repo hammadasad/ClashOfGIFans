@@ -6,12 +6,14 @@ import { HttpClient } from '@angular/common/http';
 export class GifService {
 
   // Webtask Call
-  apiUrl = 'https://wt-1bbcd76db93ae3dc0aebda3869407160-0.run.webtask.io/GifApp';
+  api_url = 'https://wt-1bbcd76db93ae3dc0aebda3869407160-0.run.webtask.io/GifApp';
 
   constructor(private http: HttpClient) { }
 
   // Retrieve random GIF
-  getRandom() {}
+  getRandom() {
+      return this.http.get(this.api_url + "/random");
+  }
 
   // Save the random GIF
   save() {
