@@ -26,7 +26,19 @@ app.get('/random', (req, res) => {
 
 // Create a GIF w/caption
 app.post('/', (req, res) => {
-  res.send('creating');
+  // we're going to use webtask storage for our db
+  // webtaskContext.storage
+  req.webtaskContext.storage.get((err, data) => {
+    // Check if our list is initialized
+    data = data || [];
+    // push our request object onto the list
+    data.push(req.body);
+    // Save it
+    req.webtaskContext.storage.set(data, err => {
+      if(err) throw err;
+      res.json({ message: 'Storage Successful' });
+    });
+  });
 });
 
 // CLASH
