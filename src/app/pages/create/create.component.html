@@ -1,3 +1,21 @@
-<p>
-  {{ random_gif }}
-</p>
+<h1 class="title has-text-centered"> Create a GIF </h1>
+<div class="box">
+    <!-- only if random gif exists -->
+    <div class="gif-container" *ngIf="random_gif">
+        <img [src]="random_gif.url"/>
+        <div class="caption">
+          {{ caption }}
+        </div>
+    </div>
+
+    <!-- insert caption , utilizing forms module-->
+    <div class="field">
+
+    </div>
+    <input type="text" class="input" [(ngModel)]="caption"/>
+    <div class="field">
+
+    </div>
+
+    <a class="button is-success" (click)="saveGif()">Create</a>
+</div>

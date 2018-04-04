@@ -10,6 +10,7 @@ import { GifService } from '@app/core/services/gif.service';
 export class CreateComponent implements OnInit {
 
   random_gif;
+  caption = "";
 
   constructor(private gifService: GifService ) { }
 
