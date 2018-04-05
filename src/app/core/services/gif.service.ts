@@ -37,7 +37,7 @@ export class GifService {
       });
   }
   //
-  getLeaderboard() {
+  getLeaderboard(): Observable<any> {
       return this.http.get(this.api_url + "/leaderboard");
   }
 
