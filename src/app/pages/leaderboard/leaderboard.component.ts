@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { GifService } from '@app/core/services/gif.service';
 
 @Component({
   selector: 'app-leaderboard',
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LeaderboardComponent implements OnInit {
 
-  constructor() { }
+  leaderboardGIFs: Array<any>;
+
+  constructor(private gifService: GifService) { }
 
   ngOnInit() {
+      this.gifService.getLeaderboard()
+          .subscribe(data => {
+            this.leaderboardGIFs = data;
+          });
   }
 
 }

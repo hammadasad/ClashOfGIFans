@@ -38,7 +38,7 @@ export class GifService {
   }
   //
   getLeaderboard() {
-      
+      return this.http.get(this.api_url + "/leaderboard");
   }
 
 

@@ -45,7 +45,7 @@ app.post('/', (req, res) => {
 // Retrieve GIFs
 app.get('/versus', (req, res) => {
   req.webtaskContext.storage.get((err, data) => {
-      _.shuffle(data);
+      data = _.shuffle(data);
       const twoGIFS = data.slice(0, 2);
       res.json(twoGIFS);
   });
@@ -70,6 +70,10 @@ app.post('/vote', (req, res) => {
 
 // LEADERBOARD
 app.get('/leaderboard', (req, res) => {
-  res.send('the leaderboards');
+    req.webtaskContext.storage.get((err,data) => {
+        data = data.sort((elementOne, elementTwo) => elementTwo - elementOne);
+        res.json(data);
+    });
 });
+
 module.exports = Webtask.fromExpress(app);
