@@ -2,3 +2,32 @@
     display: block;
     width: 100%;
 }
+
+.box {
+    max-width: 50%;
+    margin: 0 auto;
+}
+
+img {
+    width: 100%;
+    border-radius: 3px;
+}
+
+.caption {
+    display: block;
+    position: absolute;
+    left: 20px;
+    right: 20px;
+    bottom: 30px;
+    text-align: center;
+    font-size: 30px;
+    text-transform: uppercase;
+    color: #FFF;
+    word-break: break-all;
+    text-shadow: 1px 1px 3px #000;
+    line-height: 1;
+}
+
+.gif-container {
+    position: relative;
+}

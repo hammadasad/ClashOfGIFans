@@ -44,11 +44,28 @@ app.post('/', (req, res) => {
 // CLASH
 // Retrieve GIFs
 app.get('/versus', (req, res) => {
-  res.send('retrieving versus');
+  req.webtaskContext.storage.get((err, data) => {
+      _.shuffle(data);
+      const twoGIFS = data.slice(0, 2);
+      res.json(twoGIFS);
+  });
 });
 
+// POST for Voting /vote
 app.post('/vote', (req, res) => {
-  res.send('voting');
+  // DB lookup
+  req.webtaskContext.storage.get((err, data) => {
+      // Search for index of GIF
+      const index = data.findIndex(gif => {
+          return gif.id === req.body.id;
+      });
+      // Increment the vote based on index
+      data[index].votes += 1;
+
+      req.webtaskContext.storage.set(data, err => {
+          res.json("GIF successfully voted for & updated")
+      });
+  });
 });
 
 // LEADERBOARD

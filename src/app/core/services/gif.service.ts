@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 
 import { HttpClient } from '@angular/common/http';
 
+import { Observable } from 'rxjs/Observable';
+
 @Injectable()
 export class GifService {
 
@@ -11,26 +13,31 @@ export class GifService {
   constructor(private http: HttpClient) { }
 
   // Retrieve random GIF
-  getRandom() {
+  getRandom(): Observable<any> {
       return this.http.get(this.api_url + "/random");
   }
 
   // Save the random GIF
-  save() {
-
+  save(id: string, url: string, caption: string): Observable<any> {
+      return this.http.post(this.api_url, {
+          id: id,
+          url: url,
+          caption: caption,
+          votes: 0
+      });
   }
 
-  getClash() {
-
-  }
-
-  vote(id) {
-
-  }
-
-  getLeaderboard() {
-
-  }
+  // getClash() {
+  //
+  // }
+  //
+  // vote(id) {
+  //
+  // }
+  //
+  // getLeaderboard() {
+  //
+  // }
 
 
 }

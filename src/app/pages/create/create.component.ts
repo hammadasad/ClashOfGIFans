@@ -20,4 +20,18 @@ export class CreateComponent implements OnInit {
       })
   }
 
+  // Saving the GIF action
+  saveGif() {
+      this.gifService.save(this.random_gif.id, this.random_gif.url, this.caption)
+          .subscribe(data => {
+            // reload the GIF
+            this.gifService.getRandom().subscribe(gif => {
+                    this.random_gif = gif;
+            })
+            // Clear the caption
+            this.caption = "";
+            // Show notification
+          });
+  }
+
 }
