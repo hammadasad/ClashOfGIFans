@@ -1,3 +1,13 @@
-<p>
-  battle works!
-</p>
+
+    <h1 class="title has-text-centered">Clash!</h1>
+    <div class="columns" *ngIf="clashingGIFs">
+        <div class="column is-half" *ngFor="let gif of clashingGIFs">
+            <div class="gif-container">
+                <img [src] = "gif.url"/>
+                <div class="caption">
+                  {{ gif.caption }}
+                </div>
+            </div>
+            <a class="button is-info" (click)="voteGIF(gif.id)" >Vote!</a>
+        </div>
+    </div>

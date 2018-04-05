@@ -27,17 +27,19 @@ export class GifService {
       });
   }
 
-  // getClash() {
+  getClash(): Observable<any> {
+      return this.http.get(this.api_url + "/versus");
+  }
   //
-  // }
+  vote(id) {
+      return this.http.post(this.api_url + "/vote", {
+          id: id
+      });
+  }
   //
-  // vote(id) {
-  //
-  // }
-  //
-  // getLeaderboard() {
-  //
-  // }
+  getLeaderboard() {
+      
+  }
 
 
 }
